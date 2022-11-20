@@ -1,0 +1,67 @@
+definitions:
+  main.Person:
+    properties:
+      address:
+        type: string
+      name:
+        type: string
+      number:
+        type: string
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: saber.mesgari@gmail.com
+    name: API Support
+    url: maktabkhoneh.ir
+  description: This is Maktabkhoneh Golang Training API Documentation
+  license: {}
+  title: Maktabkhoneh API
+  version: "1.0"
+paths:
+  /persons/add:
+    post:
+      consumes:
+      - application/json
+      description: Add Person By Information
+      operationId: add-person
+      parameters:
+      - description: Person Information
+        in: body
+        name: person
+        required: true
+        schema:
+          $ref: '#/definitions/main.Person'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            Token:
+              description: qwerty
+              type: string
+          schema:
+            type: string
+      summary: Add Person
+      tags:
+      - Person
+  /persons/view/{person_name}:
+    get:
+      consumes:
+      - application/json
+      description: Get Person Information by Name
+      operationId: get-person-by-name
+      parameters:
+      - description: Person Name
+        in: path
+        name: person_name
+        required: true
+        type: string
+      produces:
+      - text/html
+      responses: {}
+      summary: Get Person Information by Name
+      tags:
+      - Person
+swagger: "2.0"

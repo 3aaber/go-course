@@ -1,0 +1,100 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is Maktabkhoneh Golang Training API Documentation",
+        "title": "Maktabkhoneh API",
+        "contact": {
+            "name": "API Support",
+            "url": "maktabkhoneh.ir",
+            "email": "saber.mesgari@gmail.com"
+        },
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "127.0.0.1:8080",
+    "paths": {
+        "/persons/add": {
+            "post": {
+                "description": "Add Person By Information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Add Person",
+                "operationId": "add-person",
+                "parameters": [
+                    {
+                        "description": "Person Information",
+                        "name": "person",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Person"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/persons/view/{person_name}": {
+            "get": {
+                "description": "Get Person Information by Name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Get Person Information by Name",
+                "operationId": "get-person-by-name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Person Name",
+                        "name": "person_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "main.Person": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
